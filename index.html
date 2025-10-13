@@ -11,27 +11,23 @@
             100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff; }
         }
 
-        @keyframes colorCycle {
-            0% { filter: hue-rotate(0deg) saturate(150%); }
-            100% { filter: hue-rotate(360deg) saturate(150%); }
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -10px) rotate(5deg); }
+            50% { transform: translate(0, -20px) rotate(0deg); }
+            75% { transform: translate(-10px, -10px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
         }
 
-        @keyframes zigzag {
-            0% { transform: translateX(-50%) skew(15deg); }
-            50% { transform: translateX(50%) skew(-15deg); }
-            100% { transform: translateX(-50%) skew(15deg); }
+        @keyframes colorPulse {
+            0% { filter: brightness(1) hue-rotate(0deg); }
+            50% { filter: brightness(1.2) hue-rotate(180deg); }
+            100% { filter: brightness(1) hue-rotate(360deg); }
         }
 
-        @keyframes rotate3D {
-            0% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
-            50% { transform: perspective(1000px) rotateX(15deg) rotateY(180deg); }
-            100% { transform: perspective(1000px) rotateX(0deg) rotateY(360deg); }
-        }
-
-        @keyframes flashingText {
-            0%, 19% { text-shadow: none; }
-            20%, 21.5% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #00ff00; }
-            21.6%, 100% { text-shadow: none; }
+        @keyframes draw {
+            0% { stroke-dashoffset: 1000; }
+            100% { stroke-dashoffset: 0; }
         }
 
         .background-graphics {
@@ -46,85 +42,73 @@
             background: #000;
         }
 
-        .mtv-pattern {
+        .design-elements {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: 
-                linear-gradient(45deg, 
-                    #ff0099 25%, 
-                    #00ff00 25%, 
-                    #00ff00 50%, 
-                    #ff0099 50%, 
-                    #ff0099 75%, 
-                    #00ff00 75%
-                );
-            background-size: 100px 100px;
-            opacity: 0.3;
-            animation: colorCycle 10s linear infinite;
         }
 
-        .zigzag-line {
+        .design-icon {
             position: absolute;
-            width: 200%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                45deg,
-                #ff00ff,
-                #ff00ff 10px,
-                transparent 10px,
-                transparent 20px
-            );
-            opacity: 0.5;
-            animation: zigzag 8s linear infinite;
+            width: 80px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite, colorPulse 8s linear infinite;
         }
 
-        .geometric-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .pencil {
+            top: 15%;
+            left: 10%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff00ff' stroke-width='2'%3E%3Cpath d='M17 3L21 7L7 21H3V17L17 3Z'/%3E%3C/svg%3E");
+            animation-delay: -1s;
         }
 
-        .shape {
-            position: absolute;
-            border-style: solid;
-            opacity: 0.8;
-            animation: rotate3D 15s linear infinite;
-        }
-
-        .shape1 {
-            top: 20%;
-            left: 20%;
-            width: 100px;
-            height: 100px;
-            border-width: 4px;
-            border-color: #ff00ff transparent #00ffff transparent;
-            transform-style: preserve-3d;
+        .palette {
+            top: 70%;
+            right: 15%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ffff' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='8' cy='8' r='2'/%3E%3Ccircle cx='16' cy='8' r='2'/%3E%3Ccircle cx='16' cy='16' r='2'/%3E%3Ccircle cx='8' cy='16' r='2'/%3E%3C/svg%3E");
             animation-delay: -2s;
         }
 
-        .shape2 {
-            bottom: 20%;
+        .ruler {
+            top: 30%;
             right: 20%;
-            width: 150px;
-            height: 150px;
-            border-width: 4px;
-            border-color: #00ffff transparent #ff00ff transparent;
-            transform-style: preserve-3d;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffff00' stroke-width='2'%3E%3Cpath d='M2 20h20v-2H2v2zm2-6h2v2H4v-2zm4 0h2v2H8v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z'/%3E%3C/svg%3E");
+            animation-delay: -3s;
+        }
+
+        .brush {
+            top: 60%;
+            left: 25%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff00ff' stroke-width='2'%3E%3Cpath d='M20 6.5L17.5 4L7 14.5V17h2.5L20 6.5z'/%3E%3Cpath d='M3 21h18'/%3E%3C/svg%3E");
             animation-delay: -4s;
         }
 
-        .shape3 {
-            top: 50%;
-            left: 50%;
-            width: 120px;
-            height: 120px;
-            border-width: 4px;
-            border-color: #ffff00 transparent #00ffff transparent;
-            transform-style: preserve-3d;
+        .cursor {
+            top: 40%;
+            left: 40%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ffff' stroke-width='2'%3E%3Cpolygon points='3,3 21,12 9,12 3,21'/%3E%3C/svg%3E");
+            animation-delay: -5s;
+        }
+
+        .vector {
+            top: 20%;
+            right: 35%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffff00' stroke-width='2'%3E%3Cpath d='M4 4h16v16H4z'/%3E%3Cpath d='M9 9l6 6M9 15l6-6'/%3E%3C/svg%3E");
             animation-delay: -6s;
+        }
+
+        .neon-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(255, 0, 255, 0.1) 0%, 
+                rgba(0, 255, 255, 0.1) 50%, 
+                transparent 100%);
+            animation: colorPulse 10s linear infinite;
         }
 
         body {
@@ -285,15 +269,16 @@
 </head>
 <body>
     <div class="background-graphics">
-        <div class="mtv-pattern"></div>
-        <div class="zigzag-line"></div>
-        <div class="geometric-shapes">
-            <div class="shape shape1"></div>
-            <div class="shape shape2"></div>
-            <div class="shape shape3"></div>
+        <div class="neon-glow"></div>
+        <div class="design-elements">
+            <div class="design-icon pencil"></div>
+            <div class="design-icon palette"></div>
+            <div class="design-icon ruler"></div>
+            <div class="design-icon brush"></div>
+            <div class="design-icon cursor"></div>
+            <div class="design-icon vector"></div>
         </div>
     </div>
-    <div class="flash"></div>
     <div class="container">
         <h1>Hello World!</h1>
         <div class="profile-image">
