@@ -1,0 +1,13 @@
+{
+    "git.enabled": true,
+    "git.path": "/opt/local/bin/git",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": true,
+    "git.enableCommitSigning": false,
+    "git.showActionButton": {
+        "commit": true,
+        "publish": true,
+        "sync": true
+    }
+}
