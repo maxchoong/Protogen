@@ -27,16 +27,22 @@
         }
 
         .profile-image {
-            width: 200px;
-            height: 200px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-            background-color: #ddd;
             margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: #666;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .profile-image img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -31%) scale(.7);
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
         }
 
         .bio {
@@ -65,8 +71,8 @@
 <body>
     <div class="container">
         <h1>Hello World!</h1>
-        <div class="profile-image" role="img" aria-label="Profile image placeholder">
-            Profile Image Placeholder
+        <div class="profile-image">
+            <img src="BaiRBIE - MC2.png" alt="Profile picture" />
         </div>
         <div class="bio">
             Hello! I'm a passionate designer with a keen eye for detail and a love for creating beautiful, functional designs. I specialize in user-centered design solutions that make a real impact. With several years of experience in digital and print design, I bring creativity and strategic thinking to every project.
