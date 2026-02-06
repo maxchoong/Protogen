@@ -30,6 +30,11 @@
             100% { stroke-dashoffset: 0; }
         }
 
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
         .background-graphics {
             position: fixed;
             top: 0;
@@ -227,6 +232,16 @@
             padding: 20px;
             border-radius: 10px;
             border: 1px solid rgba(0, 255, 255, 0.3);
+            min-height: 100px;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: #00ffff;
+            margin-left: 4px;
+            animation: blink 1s infinite;
         }
 
         .contact-button {
@@ -282,12 +297,35 @@
     <div class="container">
         <h1>Hello World!</h1>
         <div class="profile-image">
-            <img src="BaiRBIE - MC2.png" alt="Profile picture" />
+            <img src="assets/bairbie-mc2.png" alt="Profile picture" />
         </div>
-        <div class="bio">
-            Hello! I'm a passionate designer with a keen eye for detail and a love for creating beautiful, functional designs. I specialize in user-centered design solutions that make a real impact. With several years of experience in digital and print design, I bring creativity and strategic thinking to every project.
-        </div>
+        <div class="bio" id="bio-text"></div>
         <a href="mailto:your.email@example.com" class="contact-button">Contact Me</a>
     </div>
+    <script>
+        function typeWriter(element, text, speed = 50) {
+            let index = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (index < text.length) {
+                    element.innerHTML = text.substring(0, index + 1) + '<span class="typing-cursor"></span>';
+                    index++;
+                    setTimeout(type, speed);
+                } else {
+                    element.innerHTML = text + '<span class="typing-cursor"></span>';
+                }
+            }
+            
+            type();
+        }
+        
+        const bioText = "Hello! I'm a passionate designer with a keen eye for detail and a love for creating beautiful, functional designs. I specialize in user-centered design solutions that make a real impact. With several years of experience in digital and print design, I bring creativity and strategic thinking to every project.";
+        
+        window.addEventListener('load', function() {
+            const bioElement = document.getElementById('bio-text');
+            typeWriter(bioElement, bioText, 50);
+        });
+    </script>
 </body>
 </html>
